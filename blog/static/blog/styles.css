@@ -3,14 +3,29 @@ body {
     margin: 0;
     padding: 20px;
     background-color: #f4f4f4;
+    transition: background-color 0.3s ease;
+}
+
+body:hover {
+    background-color: #e2e2e2; /* Cambia il colore di sfondo al passaggio del mouse */
 }
 
 h1 {
     color: #333;
+    transition: color 0.3s ease;
+}
+
+h1:hover {
+    color: #0056b3; /* Cambia il colore al passaggio del mouse */
 }
 
 h2 {
     color: #007BFF;
+    transition: color 0.3s ease;
+}
+
+h2:hover {
+    color: #0056b3; /* Cambia il colore al passaggio del mouse */
 }
 
 ul {
@@ -24,13 +39,54 @@ li {
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-5px); /* Solleva l'elemento al passaggio del mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Aumenta l'ombra al passaggio del mouse */
 }
 
 a {
     text-decoration: none;
     color: #007BFF;
+    transition: color 0.3s ease;
 }
 
 a:hover {
     text-decoration: underline;
+    color: #0056b3; /* Cambia il colore al passaggio del mouse */
+}
+
+/* Animazione per l'apparizione degli elementi della lista */
+li {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s forwards; /* Applica l'animazione */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries per la responsività */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    li {
+        padding: 10px;
+    }
 }
