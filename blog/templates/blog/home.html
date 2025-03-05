@@ -7,20 +7,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         * {
-            box-sizing: border-box; /* Assicura che padding e border non influenzino le dimensioni degli elementi */
+            box-sizing: border-box; 
         }
 
         html, body {
-            height: 100%; /* Imposta l'altezza del body e dell'html al 100% */
-            margin: 0; /* Rimuove il margine predefinito */
+            height: 100%; 
+            margin: 0; 
         }
 
         body {
             display: flex;
-            flex-direction: column; /* Dispone gli elementi in colonna */
-        }
-
-        body {
+            flex-direction: column; 
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -80,12 +77,37 @@
             color: #f00f00;
             width: 100%;
         }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        .btn-footer {
+            display: inline-block;
+            font-size: 16px;
+            color: #fff;
+            background: #e8491d;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .btn-footer:hover {
+            background: #c7371a;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>Benvenuto nel mio Blog!</h1>
-        <a href="{% url 'admin:index' %}" class="btn-login">Accedi all'Admin</a> 
+        <a href="{% url 'admin:index' %}" class="btn-login">Accedi come Admin</a> 
     </header>
     <div class="container">
         <h2>Scopri i nostri ultimi articoli</h2>
@@ -99,13 +121,13 @@
         {% endfor %}
     </div>
     <footer>
- <nav>
-    <ul>
-        <li><a href="{% url 'about' %}">Chi Siamo</a></li>
-        <li><a href="{% url 'contact' %}">Contatti</a></li>
-        <p> 2025 Il Mio Blog</p>
-    </ul>
-</nav>
+        <nav>
+            <ul>
+                <li><a href="{% url 'about' %}" class="btn-footer">Chi Siamo</a></li>
+                <li><a href="{% url 'contact' %}" class="btn-footer">Contatti</a></li>
+            </ul>
+        </nav>
+        <p>2025 Il Mio Blog</p>
     </footer>
 </body>
 </html>
