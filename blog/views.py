@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.views.generic import TemplateView
-from django.http import HttpResponse
+
 from . import forms
+from .forms import SearchForm
 from django.shortcuts import  redirect
+from django.db.models import Q
 
 
 
@@ -63,3 +65,29 @@ def post_new(request):
 
 
     return render(request, 'blog/post_edit.html', {'form': form})  # Rende la pagina con il modulo
+def search_posts(request):
+
+    form = SearchForm()
+
+    results = []
+
+
+    if 'query' in request.GET:
+
+        form = SearchForm(request.GET)
+
+
+        if form.is_valid():
+
+            query = form.cleaned_data['query']
+
+          
+
+            results = Post.objects.filter(
+
+                Q(title__icontains=query) | Q(body__icontains=query)
+
+            )
+
+
+    return render(request, 'blog/search_results.html', {'form': form, 'results': results})

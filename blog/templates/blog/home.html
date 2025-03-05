@@ -36,7 +36,7 @@
         }
 
         .container {
-            flex: 1; /* Questo permette al contenitore di espandersi per occupare lo spazio disponibile */
+            flex: 1; 
             padding: 20px;
         }
 
@@ -72,6 +72,22 @@
     </style>
 </head>
 <body>
+    <nav class="navbar bg-body-tertiary">
+
+        <div class="container-fluid">
+
+            <form method="get" action="{% url 'search_posts' %}" class="d-flex" role="search">
+
+                <input class="form-control me-2" type="search" name="query" placeholder="Cerca" aria-label="Search">
+
+                <button class="btn btn-outline-success" type="submit">Cerca</button>
+
+            </form>
+
+        </div>
+
+    </nav>
+
     <header>
         <h1>Benvenuto nel mio Blog!</h1>
         <a href="{% url 'admin:index' %}" class="btn btn-danger">Accedi come Admin</a> 
