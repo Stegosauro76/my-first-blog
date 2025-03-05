@@ -2,6 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.views.generic import TemplateView
 from django.http import HttpResponse
+from . import forms
+from django.shortcuts import  redirect
+
+
 
 def post_list(request):
     posts = Post.objects.all()
@@ -9,8 +13,11 @@ def post_list(request):
     # If you don't have comments, you can remove 'comments' from the context
     return render(request, 'blog/post_list.html', {'posts': posts})
 
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
+
+def post_detail(request, post_id):
+
+    post = get_object_or_404(Post, id=post_id)  
+
     return render(request, 'blog/post_detail.html', {'post': post})
 
 def home(request):
@@ -36,3 +43,23 @@ def contatto_view(request):
         return redirect('success_url')  # Replace 'success_url' with your actual URL name
 
     return render(request, 'blog/contact.html')
+
+
+def post_new(request):
+
+    if request.method == 'POST':
+
+        form = forms.CreatePost(request.POST)  # Crea un'istanza del modulo con i dati inviati
+
+        if form.is_valid():  # Verifica se il modulo è valido
+
+            post = form.save()  # Salva il nuovo post nel database
+
+            return redirect('post_detail', post_id=post.id)  # Reindirizza al dettaglio del post appena creato
+
+    else:
+
+        form = forms.CreatePost()  # Crea un modulo vuoto per la visualizzazione iniziale
+
+
+    return render(request, 'blog/post_edit.html', {'form': form})  # Rende la pagina con il modulo

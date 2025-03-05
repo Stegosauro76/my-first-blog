@@ -4,19 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blog/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Post del Blog</h1>
-    <ul>
-        {% for post in posts %}
-            <li>
-                <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
-                <p>{{ post.content|truncatewords:30 }}</p>
-                <p><em>Creato il {{ post.created_at }}</em></p>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h1>Post del Blog</h1>
+        
+        <!-- Pulsante per tornare alla home -->
+        <a href="home.html" class="btn btn-primary">Torna alla Home</a>
+
+        {% if posts %}
+            <ul class="list-group mt-3">
+                {% for post in posts %}
+                    <li class="list-group-item">
+                        <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+                        <p>{{ post.content|truncatewords:30 }}</p>
+                        <p><em>Creato il {{ post.created_at|date:"d M Y" }}</em></p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Nessun post disponibile.</p>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
