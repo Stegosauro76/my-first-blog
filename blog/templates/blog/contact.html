@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
+ {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contatti</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        html, body {
+            height: 100%;
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
+            display: flex;
+            flex-direction: column;
         }
         header {
             background: #35424a;
@@ -20,6 +26,7 @@
             text-align: center;
         }
         .container {
+            flex: 1; /* Questo permette al contenitore di occupare lo spazio disponibile */
             width: 80%;
             margin: auto;
             padding: 20px;
@@ -54,7 +61,7 @@
         }
         .btn-home {
             display: inline-block;
-                        margin-top: 20px;
+            margin-top: 20px;
             padding: 10px 20px;
             background: #e8491d;
             color: #ffffff;
@@ -74,12 +81,7 @@
     <div class="container">
         <h2>Contattaci</h2>
         <p>Se hai domande o commenti, non esitare a contattarci!</p>
-        <form action="#" method="post">
-            <input type="text" name="name" placeholder="Il tuo nome" required>
-            <input type="email" name="email" placeholder="La tua email" required>
-            <textarea name="message" rows="5" placeholder="Il tuo messaggio" required></textarea>
-            <button type="submit">Invia</button>
-        </form>
+  
         <a href="{% url 'home' %}" class="btn-home">Torna alla Home</a> <!-- Pulsante per tornare alla home -->
     </div>
     <footer>
