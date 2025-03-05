@@ -41,7 +41,7 @@
         }
 
         .container {
-            flex: 1; /* Permette al contenuto di occupare lo spazio rimanente */
+            flex: 1; 
             width: 80%;
             margin: auto;
             overflow: hidden;
@@ -77,7 +77,7 @@
             text-align: center;
             padding: 20px 0;
             background: #35424a;
-            color: #ffffff;
+            color: #f00f00;
             width: 100%;
         }
     </style>
@@ -99,10 +99,13 @@
         {% endfor %}
     </div>
     <footer>
-                <p>&copy; 2025 Il mio Blog. Tutti i diritti riservati.</p>
-        <a href="#about">Chi Siamo</a> |
-        <a href="#services">Servizi</a> |
-        <a href="#contact">Contatti</a>
+ <nav>
+    <ul>
+        <li><a href="{% url 'about' %}">Chi Siamo</a></li>
+        <li><a href="{% url 'contact' %}">Contatti</a></li>
+        <p> 2025 Il Mio Blog</p>
+    </ul>
+</nav>
     </footer>
 </body>
 </html>

@@ -9,8 +9,23 @@
 </head>
 <body>
     <h1>{{ post.title }}</h1>
-    <p>{{ post.content }}</p>
+    <p>{{ post.body }}</p>  
     <p><em>Creato il {{ post.created_at }}</em></p>
+    
+    <h2>Commenti:</h2>
+    {% if comments %}
+        <ul>
+            {% for comment in comments %}
+                <li>
+                    <strong>{{ comment.author }}</strong> ({{ comment.created_on }}):
+                    <p>{{ comment.body }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Nessun commento ancora.</p>
+    {% endif %}
+    
     <a href="{% url 'post_list' %}">Torna alla lista dei post</a>
 </body>
 </html>

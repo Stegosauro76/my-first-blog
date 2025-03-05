@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatti</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #35424a;
+            color: #ffffff;
+            width: 100%;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background: #35424a;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #e8491d;
+        }
+        .btn-home {
+            display: inline-block;
+                        margin-top: 20px;
+            padding: 10px 20px;
+            background: #e8491d;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .btn-home:hover {
+            background: #c7371a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Contatti</h1>
+    </header>
+    <div class="container">
+        <h2>Contattaci</h2>
+        <p>Se hai domande o commenti, non esitare a contattarci!</p>
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Il tuo nome" required>
+            <input type="email" name="email" placeholder="La tua email" required>
+            <textarea name="message" rows="5" placeholder="Il tuo messaggio" required></textarea>
+            <button type="submit">Invia</button>
+        </form>
+        <a href="{% url 'home' %}" class="btn-home">Torna alla Home</a> <!-- Pulsante per tornare alla home -->
+    </div>
+    <footer>
+        <p>&copy; 2025 Il tuo Blog. Tutti i diritti riservati.</p>
+        <a href="{% url 'about' %}">Chi Siamo</a> |
+        <a href="{% url 'contact' %}">Contatti</a>
+    </footer>
+</body>
+</html>
